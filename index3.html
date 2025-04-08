@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bánh Mì Hội An - Hương Vị Di Sản</title>
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+
+/* Tổng thể */
+body {
+    font-family: 'Roboto', sans-serif; /* Font chữ dễ đọc */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .hero-title {
+    font-family: 'Playfair Display', serif; /* Font tiêu đề, tạo cảm giác cổ điển, sang trọng */
+    font-weight: 700;
+}
+
+/* Màu sắc thương hiệu (Ví dụ - cần điều chỉnh theo logo và ý tưởng) */
+:root {
+    --primary-color: #E4A80F; /* Màu vàng đặc trưng của Hội An */
+    --secondary-color: #8B4513; /* Màu nâu của gỗ, đất */
+    --dark-color: #333;
+    --light-color: #f8f9fa;
+    --white-color: #fff;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c8940e; /* Màu đậm hơn khi hover */
+    border-color: #c8940e;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+     background-color: var(--primary-color) !important;
+}
+
+/* Header */
+.navbar {
+    background-color: var(--white-color) !important; /* Nền trắng cho navbar */
+}
+
+.navbar-brand img {
+    /* CSS cho logo nếu cần */
+}
+
+.nav-link {
+    color: var(--dark-color);
+    font-weight: 500;
+    padding: 0.8rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+#hero {
+    height: 85vh; /* Chiều cao của hero section */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-background.jpg') no-repeat center center/cover;
+    /* Thay 'images/hero-background.jpg' bằng ảnh nền chất lượng cao của bạn */
+    color: var(--white-color);
+    position: relative; /* Để định vị nội dung tuyệt đối bên trong nếu cần */
+}
+
+#hero .container {
+    z-index: 2; /* Đảm bảo nội dung nổi trên lớp phủ */
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Cỡ chữ lớn cho tiêu đề chính */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400; /* Dùng font Roboto bình thường */
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Section Titles */
+.section-title {
+    color: var(--secondary-color); /* Màu nâu cho tiêu đề section */
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+/* Đường gạch chân dưới tiêu đề (tùy chọn) */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto 0; /* Căn giữa nếu text-align center */
+}
+/* Điều chỉnh lại nếu tiêu đề không căn giữa */
+#about .section-title::after, #franchise .section-title::after {
+     margin: 0.5rem 0 0; /* Căn trái */
+}
+#franchise .section-title::after {
+    background-color: var(--white-color); /* Màu trắng trên nền tối */
+}
+
+
+.section-subtitle {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* About Us Section */
+#about img {
+    max-height: 400px; /* Giới hạn chiều cao ảnh */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+/* Menu Section */
+.menu-item .card-img-top {
+    height: 200px; /* Chiều cao cố định cho ảnh món ăn */
+    object-fit: cover;
+}
+
+.menu-item .card-title {
+    color: var(--secondary-color);
+    font-family: 'Roboto', sans-serif; /* Có thể dùng font khác cho tên món */
+    font-weight: 500;
+}
+.menu-item .price {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Franchise Section */
+.franchise-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/franchise-background.jpg') no-repeat center center/cover;
+    /* Ảnh nền khác cho khu vực nhượng quyền */
+    background-attachment: fixed; /* Hiệu ứng parallax nhẹ */
+}
+
+.franchise-benefits {
+    list-style: none;
+    padding-left: 0;
+}
+
+.franchise-benefits li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.franchise-benefits i {
+    color: var(--primary-color);
+    width: 25px; /* Đảm bảo icon thẳng hàng */
+}
+
+#franchise img {
+     max-width: 80%; /* Giảm kích thước ảnh minh họa */
+     margin: auto; /* Căn giữa */
+}
+
+/* Why Choose Us */
+.feature-box i {
+    /* Styling cho icon */
+}
+.feature-box h4 {
+    margin-top: 0.5rem;
+    color: var(--secondary-color);
+    font-family: 'Roboto', sans-serif;
+     font-weight: 500;
+}
+
+/* Contact Section */
+#contact i {
+    color: var(--primary-color);
+    width: 20px; /* Căn chỉnh icon */
+}
+
+.social-icons a {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+     color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color) !important;
+}
+footer p {
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+footer a {
+     font-size: 0.9rem;
+}
+
+
+/* Responsive adjustments (Ví dụ) */
+@media (max-width: 991.98px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    #hero {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+     .hero-subtitle {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+     #hero {
+        height: 60vh;
+        text-align: center; /* Căn giữa text trên mobile */
+    }
+    #hero .btn {
+        display: block; /* Nút xuống dòng */
+        margin: 0.5rem auto; /* Căn giữa */
+        width: 80%;
+    }
+     #about .text-center, #menu .text-center, #why-us .text-center, #contact .text-center {
+        text-align: center !important; /* Đảm bảo căn giữa trên mobile */
+    }
+     #about .section-title::after {
+        margin: 0.5rem auto 0; /* Căn giữa gạch chân */
+     }
+     /* Có thể ẩn ảnh franchise trên mobile nếu quá chật */
+     /* #franchise img { display: none; } */
+}
+
+/* Animation (Ví dụ đơn giản - có thể dùng thư viện như AOS.js) */
+.menu-item, .feature-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu-item:hover, .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+/* Scroll Spy Highlighting (Cho active link trên navbar) */
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="sticky-top shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo-banh-mi-hoi-an.png" alt="Bánh Mì Hội An Logo" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#hero">Trang Chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Về Chúng Tôi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu">Thực Đơn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-primary" href="#franchise">Nhượng Quyền</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Liên Hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="d-flex align-items-center text-center">
+            <div class="container position-relative">
+                 <h1 class="hero-title">Bánh Mì Hội An</h1>
+                <h2 class="hero-subtitle mb-4">Tinh hoa ẩm thực phố Hội - Hương vị truyền thống, vươn tầm thế giới</h2>
+                <a href="#menu" class="btn btn-primary btn-lg me-2">Khám Phá Thực Đơn</a>
+                <a href="#franchise" class="btn btn-outline-light btn-lg">Tìm Hiểu Nhượng Quyền</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <img src="images/about-us-image.jpg" alt="Câu chuyện Bánh Mì Hội An" class="img-fluid rounded shadow">
+                        </div>
+                    <div class="col-lg-6">
+                        <h2 class="section-title">Về Chúng Tôi</h2>
+                        <h3 class="section-subtitle mb-3">Hành trình mang hương vị phố Hội</h3>
+                        <p>Kể câu chuyện về nguồn gốc thương hiệu, niềm đam mê với bánh mì Hội An chính gốc, sự khác biệt trong công thức, nguyên liệu chọn lọc (vd: pate nhà làm, rau sạch, nước sốt bí truyền...).</p>
+                        <p>Nhấn mạnh vào giá trị cốt lõi: Chất lượng, Truyền thống, Tâm huyết...</p>
+                        <a href="#" class="btn btn-outline-primary">Xem Thêm Câu Chuyện</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Thực Đơn Đặc Sắc</h2>
+                <p class="text-center mb-5">Trải nghiệm hương vị bánh mì Hội An đích thực với những lựa chọn đa dạng.</p>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="card h-100 shadow-sm menu-item">
+                            <img src="images/menu-banh-mi-thap-cam.jpg" class="card-img-top" alt="Bánh Mì Thập Cẩm">
+                            <div class="card-body">
+                                <h5 class="card-title">Bánh Mì Thập Cẩm Đặc Biệt</h5>
+                                <p class="card-text">Sự kết hợp hoàn hảo của pate gan nhà làm, thịt xá xíu đậm đà, chả lụa, rau thơm tươi rói và nước sốt bí truyền.</p>
+                                <p class="price fw-bold">35.000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm menu-item">
+                            <img src="images/menu-banh-mi-ga-nuong.jpg" class="card-img-top" alt="Bánh Mì Gà Nướng">
+                            <div class="card-body">
+                                <h5 class="card-title">Bánh Mì Gà Nướng Sả</h5>
+                                <p class="card-text">Thịt gà mềm thơm, tẩm ướp gia vị đậm đà cùng hương sả nồng nàn, ăn kèm dưa góp chua ngọt.</p>
+                                <p class="price fw-bold">30.000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm menu-item">
+                            <img src="images/menu-banh-mi-chay.jpg" class="card-img-top" alt="Bánh Mì Chay">
+                            <div class="card-body">
+                                <h5 class="card-title">Bánh Mì Chay Nấm</h5>
+                                <p class="card-text">Nhân nấm xào thơm lừng, đậu hũ chiên giòn, rau củ tươi ngon, phù hợp cho người ăn chay.</p>
+                                <p class="price fw-bold">25.000 VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="text-center mt-4">
+                     <a href="/full-menu.pdf" target="_blank" class="btn btn-primary">Xem Toàn Bộ Thực Đơn</a>
+                     </div>
+            </div>
+        </section>
+
+        <section id="franchise" class="py-5 franchise-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h2 class="section-title text-white">Hợp Tác Nhượng Quyền</h2>
+                        <h3 class="section-subtitle text-white mb-3">Cùng Bánh Mì Hội An lan tỏa hương vị Việt</h3>
+                        <p class="text-white">Bạn đam mê ẩm thực và muốn khởi nghiệp với một thương hiệu uy tín? Bánh Mì Hội An mang đến cơ hội hợp tác nhượng quyền hấp dẫn:</p>
+                        <ul class="text-white franchise-benefits">
+                            <li><i class="fas fa-check-circle me-2"></i> Thương hiệu được yêu thích, có độ nhận diện cao.</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Mô hình kinh doanh tinh gọn, hiệu quả.</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Công thức độc quyền, nguồn nguyên liệu ổn định.</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Hỗ trợ đào tạo bài bản về vận hành, marketing.</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Chi phí đầu tư hợp lý, tiềm năng lợi nhuận cao.</li>
+                        </ul>
+                        <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#franchiseModal">
+                            Đăng Ký Tư Vấn Ngay
+                        </button>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="images/franchise-growth.png" alt="Phát triển nhượng quyền Bánh Mì Hội An" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="py-5">
+            <div class="container">
+                 <h2 class="section-title text-center">Tại Sao Chọn Chúng Tôi?</h2>
+                 <div class="row text-center mt-4 g-4">
+                     <div class="col-md-4">
+                         <div class="feature-box">
+                             <i class="fas fa-pepper-hot fa-3x mb-3 text-primary"></i>
+                             <h4>Hương Vị Nguyên Bản</h4>
+                             <p>Công thức gia truyền từ Hội An, giữ trọn vẹn tinh túy ẩm thực phố Hội.</p>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                         <div class="feature-box">
+                              <i class="fas fa-seedling fa-3x mb-3 text-primary"></i>
+                              <h4>Nguyên Liệu Tươi Sạch</h4>
+                              <p>Luôn lựa chọn nguyên liệu tươi ngon, đảm bảo vệ sinh an toàn thực phẩm.</p>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                         <div class="feature-box">
+                              <i class="fas fa-heart fa-3x mb-3 text-primary"></i>
+                              <h4>Phục Vụ Tận Tâm</h4>
+                              <p>Mang đến trải nghiệm tốt nhất cho khách hàng từ chất lượng sản phẩm đến dịch vụ.</p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Liên Hệ</h2>
+                <div class="row mt-4">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h4>Thông Tin Liên Hệ</h4>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Địa chỉ: Số 123, Đường ABC, Quận XYZ, TP. Hồ Chí Minh (Ví dụ)</p>
+                        <p><i class="fas fa-phone me-2"></i> Hotline: 09xx xxx xxx</p>
+                        <p><i class="fas fa-envelope me-2"></i> Email: info@banhmihoian.vn</p>
+                        <p><i class="fas fa-clock me-2"></i> Giờ mở cửa: 6:00 - 21:00 hàng ngày</p>
+                         <div class="social-icons mt-3">
+                             <a href="#" class="me-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                             <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
+                             <a href="#"><i class="fab fa-tiktok fa-lg"></i></a>
+                         </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>Gửi Lời Nhắn Cho Chúng Tôi</h4>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Họ và Tên" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Số Điện Thoại">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Nội dung lời nhắn" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi Liên Hệ</button>
+                        </form>
+                    </div>
+                </div>
+                 </div>
+        </section>
+
+    </main>
+
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Bánh Mì Hội An. All Rights Reserved.</p>
+            <p class="mb-0">Thiết kế bởi [Tên của bạn hoặc công ty]</p>
+            </div>
+    </footer>
+
+    <div class="modal fade" id="franchiseModal" tabindex="-1" aria-labelledby="franchiseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="franchiseModalLabel">Đăng Ký Tư Vấn Nhượng Quyền Bánh Mì Hội An</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Vui lòng để lại thông tin, chúng tôi sẽ liên hệ lại với bạn sớm nhất để tư vấn chi tiết về chính sách nhượng quyền.</p>
+                    <form id="franchiseForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="franchiseName" class="form-label">Họ và Tên *</label>
+                                <input type="text" class="form-control" id="franchiseName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="franchisePhone" class="form-label">Số Điện Thoại *</label>
+                                <input type="tel" class="form-control" id="franchisePhone" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="franchiseEmail" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="franchiseEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="franchiseLocation" class="form-label">Khu vực bạn muốn mở</label>
+                            <input type="text" class="form-control" id="franchiseLocation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="franchiseMessage" class="form-label">Lời nhắn thêm (nếu có)</label>
+                            <textarea class="form-control" id="franchiseMessage" rows="3"></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="franchiseAgree" required>
+                            <label class="form-check-label" for="franchiseAgree">
+                                Tôi đồng ý với <a href="/terms-franchise" target="_blank">Điều khoản & Chính sách Nhượng quyền</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi Đăng Ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src=>
+        document.addEventListener('DOMContentLoaded', function() {
+
+// 1. Smooth Scrolling cho các link nội bộ (Anchor links)
+const internalLinks = document.querySelectorAll('a[href^="#"]');
+internalLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            // Tính toán vị trí scroll tới, trừ đi chiều cao của header (nếu sticky)
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const targetPosition = targetElement.offsetTop - headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // Đóng menu mobile nếu đang mở (Bootstrap 5)
+             const navbarCollapse = document.querySelector('.navbar-collapse');
+             if (navbarCollapse.classList.contains('show')) {
+                 const toggler = document.querySelector('.navbar-toggler');
+                 toggler.click(); // Simulate click to close
+             }
+        }
+    });
+});
+
+// 2. Xử lý Form Liên Hệ (ví dụ: chỉ hiển thị thông báo, cần backend để gửi mail thật)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Ngăn chặn gửi form mặc định
+        // Thêm validation nếu cần
+        alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
+        contactForm.reset(); // Xóa nội dung form
+    });
+}
+
+// 3. Xử lý Form Đăng Ký Nhượng Quyền (ví dụ: chỉ hiển thị thông báo)
+const franchiseForm = document.getElementById('franchiseForm');
+if (franchiseForm) {
+    franchiseForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const agreeCheckbox = document.getElementById('franchiseAgree');
+        if (!agreeCheckbox.checked) {
+            alert('Vui lòng đồng ý với Điều khoản & Chính sách Nhượng quyền.');
+            return; // Dừng lại nếu chưa check
+        }
+
+        // Lấy dữ liệu (có thể gửi đi bằng AJAX nếu có backend)
+        const name = document.getElementById('franchiseName').value;
+        const phone = document.getElementById('franchisePhone').value;
+        // ... lấy các field khác
+
+        console.log('Đăng ký nhượng quyền:', { name, phone /*, ...*/ }); // Log ra console để test
+
+        alert(`Cảm ơn ${name} đã đăng ký! Chúng tôi sẽ liên hệ qua SĐT ${phone} để tư vấn chi tiết.`);
+
+        // Đóng modal (Bootstrap 5)
+        const franchiseModalElement = document.getElementById('franchiseModal');
+        const franchiseModal = bootstrap.Modal.getInstance(franchiseModalElement);
+        if (franchiseModal) {
+            franchiseModal.hide();
+        }
+
+        franchiseForm.reset(); // Xóa nội dung form
+    });
+}
+
+// 4. Active link trên Navbar khi scroll (Scroll Spy - sử dụng tính năng của Bootstrap)
+// Bootstrap tự động xử lý việc này nếu bạn đã thêm `data-bs-spy="scroll"` và `data-bs-target="#navbarNav"` vào thẻ `<body>`
+// Hoặc bạn có thể thêm bằng JS:
+const scrollSpyBody = document.querySelector('body');
+if (scrollSpyBody) {
+     // Cần tính offset bằng chiều cao navbar để highlight chính xác hơn
+     const headerHeight = document.querySelector('header')?.offsetHeight || 70;
+     new bootstrap.ScrollSpy(scrollSpyBody, {
+         target: '#navbarNav',
+         offset: headerHeight + 10 // Thêm 1 chút offset
+     });
+}
+
+// 5. Thêm hiệu ứng động khi scroll tới (Ví dụ dùng thư viện AOS - Animate On Scroll)
+// Bạn cần thêm link thư viện AOS vào <head>
+// <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+// <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+// Sau đó khởi tạo:
+// AOS.init({
+//     duration: 800, // Thời gian animation
+//     once: true // Chỉ chạy animation 1 lần
+// });
+// Và thêm attribute data-aos="fade-up" (hoặc các hiệu ứng khác) vào các element muốn có hiệu ứng
+
+});
+    </script>
+</body>
+</html>

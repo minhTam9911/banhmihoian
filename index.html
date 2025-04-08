@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bánh Mì Hội An - Hương vị đặc trưng xứ Quảng</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Biến màu sắc */
+        :root {
+            --primary-color: #e67e22;
+            --secondary-color: #d35400;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --text-color: #555;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 2s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--light-color);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-content p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Franchise Section */
+        .franchise-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Thêm thư viện EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Khởi tạo EmailJS với User ID của bạn
+        (function () {
+            emailjs.init('YOUR_USER_ID'); // Thay YOUR_USER_ID bằng ID của bạn từ EmailJS
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlO5fepc9HmJrWVsRUP1bXYjI88JZN7hCog&s" alt="Bánh Mì Hội An Logo">
+                    <span>Bánh Mì Hội An</span>
+                </div>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#about">Giới thiệu</a></li>
+                        <li><a href="#menu">Thực đơn</a></li>
+                        <li><a href="#franchise">Nhượng quyền</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bánh Mì Hội An - Hương vị đặc trưng xứ Quảng</h1>
+                <p>Thưởng thức hương vị bánh mì đặc biệt với công thức gia truyền từ Hội An, kết hợp giữa vị giòn tan
+                    của vỏ bánh và nhân thịt đậm đà khó quên.</p>
+                <a href="#menu" class="btn">Xem thực đơn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Về chúng tôi</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Câu chuyện về Bánh Mì Hội An</h3>
+                    <p>Bánh Mì Hội An được thành lập từ năm 2010 với mong muốn mang hương vị đặc trưng của ẩm thực phố
+                        cổ Hội An đến với mọi người. Chúng tôi tự hào là một trong những thương hiệu bánh mì đầu tiên
+                        giữ nguyên hương vị truyền thống kết hợp với sự sáng tạo hiện đại.</p>
+                    <p>Với công thức gia truyền và nguyên liệu được chọn lọc kỹ càng, mỗi ổ bánh mì của chúng tôi là một
+                        tác phẩm nghệ thuật ẩm thực, đem đến trải nghiệm vị giác khó quên cho thực khách.</p>
+                    <p>Đến nay, Bánh Mì Hội An đã có mặt tại 15 tỉnh thành trên cả nước và đang tiếp tục mở rộng để mang
+                        hương vị này đến với nhiều người hơn nữa.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Hội An">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Thực đơn</h2>
+            </div>
+            <div class="menu-items">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Thập Cẩm">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Thập Cẩm</h3>
+                        <p>Bánh mì giòn tan với nhân thịt nguội, pate, chả lụa, rau sống và sốt đặc biệt.</p>
+                        <div class="price">25.000đ</div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Xíu Mại">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Xíu Mại</h3>
+                        <p>Xíu mại thơm ngon với nước sốt đậm đà, kèm rau sống và đồ chua.</p>
+                        <div class="price">30.000đ</div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Bì">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Bì</h3>
+                        <p>Bánh mì với bì heo thơm ngon, giòn dai, kèm đồ chua và rau thơm.</p>
+                        <div class="price">28.000đ</div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Chả Cá">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Chả Cá</h3>
+                        <p>Chả cá Đà Nẵng thơm ngon kết hợp với rau sống và sốt đặc biệt.</p>
+                        <div class="price">35.000đ</div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Chay">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Chay</h3>
+                        <p>Dành cho người ăn chay với nhân đậu hũ, nấm, rau củ tươi ngon.</p>
+                        <div class="price">25.000đ</div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Bánh Mì Đặc Biệt">
+                    <div class="menu-item-content">
+                        <h3>Bánh Mì Đặc Biệt</h3>
+                        <p>Tất cả các loại nhân thượng hạng kết hợp trong một ổ bánh mì đầy ắp.</p>
+                        <div class="price">45.000đ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franchise Section -->
+    <section class="section" id="franchise">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chính sách nhượng quyền</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Cơ hội kinh doanh cùng Bánh Mì Hội An</h3>
+                    <p>Với hệ thống hơn 50 cửa hàng trên toàn quốc, Bánh Mì Hội An tự hào mang đến cơ hội kinh doanh ẩm
+                        thực hấp dẫn cho các đối tác. Chúng tôi cung cấp giải pháp kinh doanh trọn gói từ A-Z với tỷ
+                        suất lợi nhuận hấp dẫn.</p>
+                    <p>Khi tham gia hệ thống nhượng quyền của chúng tôi, bạn sẽ nhận được:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 1.5rem;">
+                        <li>Công thức và bí quyết gia truyền</li>
+                        <li>Đào tạo nhân viên bài bản</li>
+                        <li>Hỗ trợ thiết kế và xây dựng cửa hàng</li>
+                        <li>Hệ thống quản lý và vận hành chuyên nghiệp</li>
+                        <li>Chiến dịch marketing định kỳ</li>
+                    </ul>
+                    <a href="#contact" class="btn">Liên hệ ngay</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Nhượng quyền Bánh Mì Hội An">
+                </div>
+            </div>
+
+            <div class="franchise-steps">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Tiếp nhận yêu cầu</h3>
+                    <p>Bạn gửi thông tin và yêu cầu nhượng quyền, chúng tôi sẽ liên hệ tư vấn trong 24h.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Khảo sát địa điểm</h3>
+                    <p>Đội ngũ của chúng tôi sẽ hỗ trợ khảo sát và đánh giá địa điểm kinh doanh tiềm năng.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Ký kết hợp đồng</h3>
+                    <p>Ký kết hợp đồng nhượng quyền với các điều khoản rõ ràng, minh bạch.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Khai trương cửa hàng</h3>
+                    <p>Hỗ trợ setup cửa hàng, đào tạo nhân viên và khai trương thành công.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Liên hệ với chúng tôi</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Thông tin liên hệ</h3>
+                    <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ mọi yêu cầu của bạn. Hãy liên hệ với chúng tôi qua
+                        các thông tin dưới đây hoặc điền vào form liên hệ.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>246 Dương Đình Hội, Tăng Nhơn Phú B, Thủ Đức, Hồ Chí Minh</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>0816 098 920</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@banhmihhoian.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Mở cửa: 6:00 - 22:00 hàng ngày</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nội dung</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <input type="hidden" name="time" id="time">
+                        <button type="submit" class="btn">Gửi liên hệ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về chúng tôi</h3>
+                    <p>Bánh Mì Hội An - Mang hương vị đặc trưng xứ Quảng đến mọi miền đất nước.</p>
+                    <p>Giấy phép kinh doanh số: 123456789 do Sở Kế hoạch & Đầu tư TP. Hội An cấp ngày 01/01/2010</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Liên kết nhanh</h3>
+                    <p><a href="#home" style="color: white; text-decoration: none;">Trang chủ</a></p>
+                    <p><a href="#about" style="color: white; text-decoration: none;">Giới thiệu</a></p>
+                    <p><a href="#menu" style="color: white; text-decoration: none;">Thực đơn</a></p>
+                    <p><a href="#franchise" style="color: white; text-decoration: none;">Nhượng quyền</a></p>
+                    <p><a href="#contact" style="color: white; text-decoration: none;">Liên hệ</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Đăng ký nhận tin</h3>
+                    <p>Đăng ký để nhận thông tin khuyến mãi và sự kiện mới nhất từ chúng tôi.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Nhập email của bạn"
+                                style="width: 100%; padding: 0.5rem; border-radius: 5px; border: none;">
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; padding: 0.5rem;">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Bánh Mì Hội An. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const now = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }); // Định dạng giờ Việt Nam
+        document.getElementById("time").value = now;
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('show');
+            // Đổi icon khi menu mở/đóng
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Đóng menu khi click bên ngoài
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('.mobile-menu-btn')) {
+                navMenu.classList.remove('show');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Form Submission với EmailJS
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Hiển thị loading
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+            submitBtn.disabled = true;
+            (function () {
+                emailjs.init("gN2kpIGtO3OBaywC8"); // Thay bằng Public Key đúng
+            })();
+            // Gửi email qua EmailJS
+            emailjs.sendForm('service_y4ywia8', 'template_liikkq6', this)
+                .then(() => {
+                    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi bạn sớm nhất.');
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    alert('Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.');
+                    console.error('Failed to send email. Error: ', error);
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu when clicking a link
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Add animation when scrolling
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'all 0.8s ease';
+            });
+
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

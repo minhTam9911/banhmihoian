@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bánh Mì Hội An - Landing Page</title>
+    <!-- Tải Tailwind CSS từ CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-yellow-600 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Bánh Mì Hội An</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:underline">Về chúng tôi</a></li>
+                    <li><a href="#menu" class="hover:underline">Thực đơn</a></li>
+                    <li><a href="#blog" class="hover:underline">Blog</a></li>
+                    <li><a href="#franchise" class="hover:underline">Nhượng quyền</a></li>
+                    <li><a href="#contact" class="hover:underline">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-96 flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1469&auto=format&fit=crop')">
+        <div class="text-center text-white bg-black bg-opacity-50 p-6 rounded-lg">
+            <h2 class="text-4xl font-bold mb-4">Thưởng thức hương vị Bánh Mì Hội An</h2>
+            <p class="text-lg">Truyền thống - Tươi ngon - Đậm đà</p>
+            <button class="mt-6 bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700">Tìm hiểu thêm</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Về chúng tôi</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1470&auto=format&fit=crop" alt="Bánh mì Hội An" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 md:pl-8">
+                    <p class="text-lg">
+                        Bánh Mì Hội An tự hào mang đến hương vị truyền thống của phố cổ Hội An, kết hợp giữa bánh mì giòn rụm, pate béo ngậy, rau sống tươi xanh và nước chấm đậm đà. Chúng tôi cam kết sử dụng nguyên liệu tươi ngon nhất để giữ trọn tinh hoa ẩm thực Việt Nam.
+                    </p>
+                    <p class="text-lg mt-4">
+                        Thành lập từ năm 2010, chúng tôi đã phục vụ hàng ngàn thực khách và không ngừng cải tiến để mang đến trải nghiệm tuyệt vời nhất.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (Các món bánh mì) -->
+    <section id="menu" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Thực đơn bánh mì</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Bánh mì 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?q=80&w=1374&auto=format&fit=crop" alt="Bánh mì pate" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Bánh mì pate truyền thống</h3>
+                    <p class="text-gray-600">Pate nhà làm, rau sống, dưa leo, nước sốt đặc biệt - 35.000 VNĐ</p>
+                </div>
+                <!-- Bánh mì 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1598514983318-2f1193cad7b7?q=80&w=1374&auto=format&fit=crop" alt="Bánh mì thịt nướng" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Bánh mì thịt nướng</h3>
+                    <p class="text-gray-600">Thịt heo nướng thơm lừng, rau thơm, nước mắm chua ngọt - 40.000 VNĐ</p>
+                </div>
+                <!-- Bánh mì 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1604329757330-42e97df3a95f?q=80&w=1374&auto=format&fit=crop" alt="Bánh mì trứng" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Bánh mì trứng ốp la</h3>
+                    <p class="text-gray-600">Trứng ốp la, chả lụa, rau sống, sốt mayonnaise - 30.000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Blog về bánh mì Hội An</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Blog 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=1471&auto=format&fit=crop" alt="Blog 1" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Nguồn gốc bánh mì Hội An</h3>
+                    <p class="text-gray-600 mb-4">Khám phá lịch sử và cách bánh mì trở thành biểu tượng ẩm thực của Hội An.</p>
+                    <a href="#" class="text-yellow-600 hover:underline">Đọc thêm</a>
+                </div>
+                <!-- Blog 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1597843786186-826cc3489f56?q=80&w=1470&auto=format&fit=crop" alt="Blog 2" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Bí quyết làm bánh mì giòn</h3>
+                    <p class="text-gray-600 mb-4">Chia sẻ công thức và mẹo để tạo ra ổ bánh mì giòn tan như ở Hội An.</p>
+                    <a href="#" class="text-yellow-600 hover:underline">Đọc thêm</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franchise Section -->
+    <section id="franchise" class="bg-gray-200 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Chính sách nhượng quyền</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Tại sao chọn chúng tôi?</h3>
+                    <ul class="list-disc pl-5">
+                        <li>Thương hiệu uy tín với hơn 10 năm kinh nghiệm</li>
+                        <li>Hỗ trợ đào tạo và cung cấp nguyên liệu</li>
+                        <li>Chi phí nhượng quyền hợp lý</li>
+                        <li>Doanh thu ổn định, lợi nhuận hấp dẫn</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Quy trình nhượng quyền</h3>
+                    <ol class="list-decimal pl-5">
+                        <li>Liên hệ và tư vấn miễn phí</li>
+                        <li>Ký kết hợp đồng nhượng quyền</li>
+                        <li>Đào tạo và setup cửa hàng</li>
+                        <li>Khai trương và vận hành</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="bg-yellow-600 text-white py-2 px-6 rounded hover:bg-yellow-700">Đăng ký nhượng quyền</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Liên hệ với chúng tôi</h2>
+            <p class="text-lg">Email: info@banhmihoian.vn | Hotline: 0909 123 456</p>
+            <p class="text-lg mt-2">Địa chỉ: 123 Đường Phố Cổ, Hội An, Việt Nam</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-yellow-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Bánh Mì Hội An. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scroll cho các link trong nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
